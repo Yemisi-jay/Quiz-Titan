@@ -2,4 +2,27 @@
 <h1>Welcome to Quiz-Titan!</h1>
 <p>Are you ready to test your knowledge?</p>
 <button id="start-game-btn">Start Game</button>
+
+<script>
+  document
+    .getElementById("start-game-btn")
+    .addEventListener("click", function () {
+      fetch("/start_game", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            window.location.href = "/game";
+          } else {
+            console.error("Failed to start game.");
+          }
+        })
+        .catch((error) => {
+          console.error("Error starting game:", error);
+        });
+    });
+</script>
 {% endblock %}
