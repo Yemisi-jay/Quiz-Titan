@@ -7,6 +7,10 @@ API_URL = "https://opentdb.com/api.php?amount=10&type=multiple"
 
 @app.route('/')
 def index():
+    return render_template('index.html')
+
+@app.route('/start_game', methods=['POST'])
+def start_game():
     session.clear()
     response = requests.get(API_URL)
     data = response.json()
@@ -14,7 +18,7 @@ def index():
     session['questions'] = questions
     session['score'] = 0
     session['current_question'] = 0
-    return render_template('index.html', question=questions[0], q_num=1)
+    return jsonify({'status': 'success'})
 
 @app.route('/submit', methods=['POST'])
 def submit():

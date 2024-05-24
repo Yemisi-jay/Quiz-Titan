@@ -1,18 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Quiz-Titan</h1>
-<div id="result-container"></div>
-<form id="quiz-form" method="post" action="{{ url_for('submit') }}">
-  <h2 id="question-num">Question {{ q_num }}</h2>
-  <p id="question-text">{{ question['question'] | safe }}</p>
-  <ul id="options-container">
-    {% for option in question['incorrect_answers'] +
-    [question['correct_answer']] %}
-    <li>
-      <input type="radio" name="option" value="{{ option }}" required /> {{
-      option }}
-    </li>
-    {% endfor %}
-  </ul>
-  <button type="submit">Submit</button>
-</form>
+<h1>Welcome to Quiz-Titan!</h1>
+<p>Are you ready to test your knowledge?</p>
+<button id="start-game-btn">Start Game</button>
 {% endblock %}
